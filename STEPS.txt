@@ -6,9 +6,9 @@
 6. npm init
 7. git init
 8. created github repo
-9. 
-10.
-11.
+9. touch .gitignore && echo './node_modules' > .gitignore
+10. git add . && git commit -m 'Create new node project'
+11 npm install --save express knex pg ejs body-parser morgan nodemon
 12.
 13.
 14.
