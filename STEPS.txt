@@ -9,7 +9,29 @@
 9. touch .gitignore && echo './node_modules' > .gitignore
 10. git add . && git commit -m 'Create new node project'
 11 npm install --save express knex pg ejs body-parser morgan nodemon
-12.
-13.
-14.
-15.
+12. git add . && git commit -m 'Install express and related packages'
+13. touch knexfile.js
+14. in knexfile.js:
+module.exports = {
+  development: {
+    client: 'pg',
+    connection: 'postgres://localhost:5432/Techtionary'
+  }
+};
+15. createdb Techtionary
+16. node_modules/.bin/knex migrate:make 'create_words_table'
+17. in migrations file:
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('words', (table) => {
+    table.increments();
+    table.string('title', 100).notNull();
+    table.text('description');
+    table.timestamps(true, true);
+  });
+};
+
+exports.down = function (knex, Promise) {
+  return knex.schema.dropTable('words');
+};
+18. node_modules/.bin/knex migrate:latest
+19. 
