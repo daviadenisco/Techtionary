@@ -1,0 +1,15 @@
+1. cd into Quarter 2
+2. npm install express-generator -g
+3. express --view=ejs myapp
+4. atom .
+5. npm install
+6. npm init
+7. git init
+8. created github repo
+9. 
+10.
+11.
+12.
+13.
+14.
+15.
