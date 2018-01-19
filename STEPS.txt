@@ -81,4 +81,26 @@ module.exports = {
 
 30. git add . && git commit -m 'Add express app packages'
 
-31. 
+31. setup canonical server.js in server.js file:
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = 8000;
+
+app.set('view engine', 'ejs');
+
+32. setup middleware in server.js file:
+app.use(morgan('combined'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+app.listen(PORT, () => {
+  console.log('Server listening on ', PORT);
+})
+
+33. in server.js file:
+"start": "nodemon"
+
+34. 

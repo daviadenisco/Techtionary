@@ -1,30 +1,18 @@
 const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+
 const app = express();
 const PORT = 8000;
 
-/*
-  GET ALL WORDS
-*/
-app.get('/birds', (req, res) => {});
+app.set('view engine', 'ejs');
 
-/*
-  CREATE A WORD
-*/
-app.post('/birds', (req, res) => {});
+app.use(morgan('combined'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-/*
-  FETCH A WORD
-*/
-app.get('/birds/:bird_id', (req, res) => {});
+app.listen(PORT, () => {
+  console.log('Server listening on ', PORT);
+})
 
-/*
-  PATCH A WORD
-*/
-app.patch('/birds/:bird_id', (req, res) => {});
-
-/*
-  DELETE A WORD
-*/
-app.delete('/birds/:bird_id', (req, res) => {});
-
-app.listen(PORT, () => console.log('Listening on', PORT))
+"start": "nodemon"
