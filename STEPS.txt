@@ -38,4 +38,12 @@ exports.down = function (knex, Promise) {
 20. git remote add origin https://github.com/daviadenisco/Techtionary.git
 21. git push -u origin master
 22. touch db.js
-23. 
+23. echo 'node_modules' > .gitignore
+24. git add .  && git commit -m 'Init an npm project'
+25. npm install --save knex pg
+26. in db.js file:
+const dbConfig = require('./knexfile').development;
+const knex = require('knex')(dbConfig);
+
+module.exports = knex;
+27.
