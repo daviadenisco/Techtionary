@@ -1,15 +1,27 @@
 1. cd into Quarter 2
+
 2. npm install express-generator -g
+
 3. express --view=ejs myapp
+
 4. atom .
+
 5. npm install
+
 6. npm init
+
 7. git init
+
 8. touch .gitignore && echo './node_modules' > .gitignore
+
 9. git add . && git commit -m 'Create new node project'
+
 10. npm install --save express knex pg ejs body-parser morgan nodemon
+
 11. git add . && git commit -m 'Install express and related packages'
+
 12. touch knexfile.js
+
 13. in knexfile.js:
 module.exports = {
   development: {
@@ -17,33 +29,50 @@ module.exports = {
     connection: 'postgres://localhost:5432/Techtionary'
   }
 };
-14. createdb Techtionary
-15. node_modules/.bin/knex migrate:make 'create_words_table'
-16. in migrations file:
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable('words', (table) => {
-    table.increments();
-    table.string('title', 100).notNull();
-    table.text('description');
-    table.timestamps(true, true);
-  });
-};
 
-exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('words');
-};
-17. node_modules/.bin/knex migrate:latest
-18. touch README.MD
-19. created github repo
-20. git remote add origin https://github.com/daviadenisco/Techtionary.git
-21. git push -u origin master
-22. touch db.js
-23. echo 'node_modules' > .gitignore
-24. git add .  && git commit -m 'Init an npm project'
-25. npm install --save knex pg
-26. in db.js file:
+14. touch README.MD
+
+15. created github repo
+
+16. git remote add origin https://github.com/daviadenisco/Techtionary.git
+
+17. git push -u origin master
+
+18. touch db.js
+
+19. echo 'node_modules' > .gitignore
+
+20. git add .  && git commit -m 'Init an npm project'
+
+21. npm install --save knex pg
+
+22. in db.js file:
 const dbConfig = require('./knexfile').development;
 const knex = require('knex')(dbConfig);
 
 module.exports = knex;
-27.
+
+23. git add . && git commit -m 'Add dev db connection and config'
+
+24. createdb Techtionary
+
+25. node_modules/.bin/knex migrate:make 'create_words_table'
+
+26. in migrations file:
+module.exports = {
+  up(knex, Promise) {
+    return knex.schema.createTable('todos', (table) => {
+      table.increments();
+      table.string('title', 255).notNull();
+      table.text('description').defaultTo('');
+      table.timestamps(true, true);
+    });
+  },
+  down(knex, Promise) {
+    return knex.schema.dropTable('todos');
+  }
+}
+
+27. node_modules/.bin/knex migrate:latest
+
+28. git add . && git commit -m 'Add words migration'
