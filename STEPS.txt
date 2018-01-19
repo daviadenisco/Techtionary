@@ -76,3 +76,9 @@ module.exports = {
 27. node_modules/.bin/knex migrate:latest
 
 28. git add . && git commit -m 'Add words migration'
+
+29. npm install --save express body-parser morgan ejs nodemon
+
+30. git add . && git commit -m 'Add express app packages'
+
+31. 
