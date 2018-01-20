@@ -100,7 +100,40 @@ app.listen(PORT, () => {
   console.log('Server listening on ', PORT);
 })
 
-33. in server.js file:
+33. in package.json file, add under scripts:
 "start": "nodemon"
 
-34. 
+34. git add . && git commit -m 'Update server w/ canonical middleware'
+
+35. mkdir routes
+
+36. cd routes
+
+37. touch words.js
+
+38. in routes/words.js file:
+const app = require('express').Router();
+app.get('/', (req, res) => {
+  res.send('ALL WORDS');
+});
+app.get('/new', (req, res) => {
+
+});
+app.get('/:id', (req, res)=> {
+
+});
+app.post('/', (req, res) => {
+
+});
+app.patch('/:id', (req, res) => {
+
+});
+app.delete('/:id', (req, res) => {
+
+});
+module.exports = app;
+39. in server.js file:
+const words = require('./routes/words');
+app.use('/words', words);
+
+40. 

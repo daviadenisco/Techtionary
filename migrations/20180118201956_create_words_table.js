@@ -3,8 +3,8 @@ module.exports = {
   up = (knex, Promise) {
     return   knex.schema.createTable('words', (table) => {
       table.increments();
-      table.string('title', 255).notNull();
-      table.text('description').defaultTo('');
+      table.string('word', 255).notNull();
+      table.text('definition').defaultTo('');
       table.timestamps(true, true);
     });
   },
