@@ -22,6 +22,3 @@ app.use('/words', words);
 app.listen(PORT, () => {
   console.log('Server listening on ', PORT);
 })
-
-// CREATE A todo function
-createWord({ body: { word, definition } }) { return knex("words") .returning("*") .insert({ word, definition }); }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Techtionary</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><a href="index.ejs"></a>
+      Techtionary</h1>
+
+        <button type="button" class="btn btn-secondary btn-lg btn-block">Add a word</button>
+
+    <% definitions.forEach(function (word) { %>
+      <h2><a href="./words/browse/<%= word.id %>"><%= word.word %></a></h2>
+    <% }) %>
+
+  </body>
+</html>

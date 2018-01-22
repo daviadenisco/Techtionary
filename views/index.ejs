@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>Techtionary</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>Techtionary</h1>
+  <div class="container-fluid">
+    <a href="/views/browse">
+      Browse Techtionary</a>
+    <p>
+    </p>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Add a word to Techtionary</button>
+  </div>
+
+  <p>
+  </p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h2 class="card-title">Word of the Day</h2>
+      <h3 class="card-subtitle mb-2 text-muted">randomlyChosenWord</h3>
+      <p class="card-text">Definition of randomly chosen word from Techtionary.</p>
+      <a href="#" class="card-link">Edit this word</a>
+      <a href="#" class="card-link"></a>
+    </div>
+  </div>
+
+</body>
+
 </html>
