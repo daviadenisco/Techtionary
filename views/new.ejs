@@ -4,15 +4,27 @@
     <meta charset="utf-8">
     <title>Add a new word</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheets' href='/stylesheets/style.css' />
 
   </head>
   <body>
     <h2>Add a Word</h2>
-    <form action="/action_page.php">
-  Word: <input type="text" name="fname" autofocus><br>
-  Definition: <input type="text" name="lname"><br>
-  <input type="submit">
-</form>
+    <%/*
+      * Where are we sending new words to be created?
+        A: POST for our http method (because that's a RESTful practice).
+          We also send all new form data to the '/words' route because
+          That's the resource
+
+          At minimum we are identify both the METHOD to perform our request
+          and the resource location on the server to handle it
+     */%>
+    <form method="POST" action="/words">
+      Word: <input type="text" name="word" autofocus><br>
+      Source: <input type="text" name="source"><br>
+      Definition: <textarea name="definition"></textarea>
+
+      <input type="submit">
+    </form>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </body>

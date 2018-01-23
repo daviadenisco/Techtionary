@@ -6,9 +6,19 @@ const knex = require("../db");
 
 app.get("/", (req, res) => {
   findAllWords(req).then(words =>
-    res.render('index', {definitions: words})
+    res.format({
+      'application/json': () => {
+        res.json(words)
+      },
+      'text/html': () => {
+        res.render('index', {definitions: words})
+      }
+    })
+
   );
 });
+
+app.get('/new', (req, res) => res.render('new'));
 
 // localhost:8000/words
 app.get("/browse", (req, res) => {
@@ -33,7 +43,14 @@ app.get("/definition/:id", (req, res) => {
 
 // http://localhost:8000/words
 // save to db, confirm it is save, then get the id of the new row in that table and then tell browser to redirect to app.get(':id', (req, res)=>{});
-app.post("/", (req, res) => { createWords(req).then(words => res.json(words[0])); });
+app.post("/", (req, res) => {
+  addWord(req).then(words => {
+    res.format({
+      'application/json': () => res.json(words[0]),
+      'text/html': () => res.redirect('/words/definition/' + words[0].id)
+    });
+  })
+});
 
 // http://localhost:8000/words/1
 app.patch("/:id", (req, res) => { updatewords(req).then(words => res.json(words[0])); });
@@ -48,8 +65,8 @@ app.patch("/:id", (req, res) => { updatewords(req).then(words => res.json(words[
 /** HELPER FUNCTIONS ****/
 
 // CREATE A words
-function createwords({ body: { words, definition } }) {
-  return knex("words").returning("*").insert({ words, definition });
+function addWord({ body: { word, definition } }) { // whitelist the params we allow
+  return knex("words").returning("*").insert({ word, definition });
 }
 
 // Find all
@@ -64,8 +81,8 @@ function findWord({params: { id }}) {
 }
 
 // Update
-function updatewords({ params: { id }, body: { words, definition }, }) {
-  return knex('words') .where('id', id) .returning('*') .update({ words, definition });
+function updatewords({ params: { id }, body: { word, definition }, }) {
+  return knex('words') .where('id', id) .returning('*') .update({ word, definition });
 }
 
 // Seed db

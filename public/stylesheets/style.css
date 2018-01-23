@@ -1,9 +1,21 @@
+.btn btn-secondary btn-lg btn-block .btn btn-secondary btn-lg btn-block {
+  background-color: blue;
+}
 body {
+  background: Maroon;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: red;
+  color: gainsboro;
 }
-
-/* a {
-  color: #00B7FF;
-} */
+.text-muted {
+  color: white;
+}
+a {
+  color: white;
+}
+.card {
+  padding-top: 10px;
+}
+nav .navbar navbar-light {
+  background: black;
+}

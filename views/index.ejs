@@ -1,37 +1,134 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Techtionary</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="utf-8">
 
+<!-- <meta name="robots" content="noindex"> -->
+  <meta name="viewport" content="width=device-width">
+  <title>Techtionary: Home</title>
 </head>
-
 <body>
-<h1>Techtionary<small class="text-muted"> : a dictionary of technical terms, written by you</small></h1>
-  <div class="container-fluid">
-        <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/words/browse">
-      Browse Techtionary</a></button>
-    <p>
-    </p>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">
-      <a href="/words/new">Add a word to Techtionary</a></button>
-  </div>
+<div class="jumbotron" style="background-image: url(https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg?w=738)">
 
-  <p>
-  </p>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h2 class="card-title">Word of the Day</h2>
-      <h3 class="card-subtitle mb-2 text-muted">randomlyChosenWord</h3>
-      <p class="card-text">Definition of randomly chosen word from Techtionary.</p>
-      <a href="#" class="card-link">Edit this word</a>
-      <a href="#" class="card-link"></a>
+</div>
+  <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="Techtionary" role="tab" data-toggle="tab">Techtionary</a></li>
+    <li role="presentation"><a href="#words" aria-controls="messages" role="tab" data-toggle="tab">Browse</a></li>
+    <li role="presentation"><a href="#addWord" aria-controls="profile" role="tab" data-toggle="tab">Add a Word</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Resources</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <p>Techtionary is a resource for web development students and beginners who are still fine-tuning their googling skills but need to quickly look up a term and get a relevant and easy-to-understand definition.</p>
+      <p>For example, try googling any of the following terms: V8 engine, focus, get, canonical, framework. The results of the search likely won't be too helpful.</p>
+      <p>Techtionary is updated by beginners and students who want to share and store the terms and definitions they've worked hard to find.</p>
+      <p>Stay tuned for these 2018 updates: </p>
+      <ul class="" role="">
+        <li role="" class="">User registration</li>
+        <li role="">Add additional definitions to a word</li>
+        <!-- <li role=""><a href="">User karma</a></li> -->
+        <!-- <li role=""><a href="">Stack Overflow style voting up/down for definitions</a></li> -->
+        <li role="">Voting: Did you find this definition helpful?</li>
+        <li role="">Comment on definitions</li>
+        <li role="">Add tags to words</li>
+        <li role="">Option to view/sort words by tag</li>
+        <li role="">Add words to custom vocabulary quiz</li>
+        <li role="">Add a resource</li>
+        <li role=""><a href="mailto:techtionary@mail.com?Subject=Techtionary%20Update%20Suggestion" target="_top">Suggest an update</a></li>
+      </ul>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="addWord">
+      <div class="row">
+         <form id="newWord" method="post" action="words" class="col-xs-8 col-xs-offset-2">
+            <div class="form-group">
+              <label>Word</label>
+              <input id="word" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>Defintion</label>
+              <textarea id="definition" class="form-control"></textarea>
+            </div>
+
+            <button class="btn btn-primary">Save</button>
+        </form>
+
+      </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="words">
+      <div id="wordList"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+      <ul class="" role="">
+        <li role=""><a href="https://developer.mozilla.org/en-US/">MDN web docs</a></li>
+        <li role=""><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+        <li role="">Coming soon: add a resource</li>
+      </ul>
+
     </div>
   </div>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</div>
+
+<script>
+document.querySelector("#newWord")
+  .addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = {
+      word: document.querySelector("#newWord #word").value,
+      definition: document.querySelector("#newWord #word").value
+    };
+
+    console.log(data);
+
+    fetch('http://localhost:8000/words', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    .then(appendWord)
+  })
+
+
+window.onload = () => {
+   fetch('/words', {
+     headers: {
+       'Accept': 'application/json'
+     }
+   }).then((res) => res.json())
+   .then(words => {
+     // append each word to wordList
+     words.forEach(word => appendWord(word));
+   })
+
+}
+
+function appendWord(data)  {
+    const list = document.querySelector("#wordList");
+    const el = document.createElement('div');
+
+    el.innerHTML = `
+      <div>
+        <h2>${data.word}</h2>
+      </div>
+    `;
+
+    list.appendChild(el);
+
+}
+</script>
 
 </body>
-
 </html>

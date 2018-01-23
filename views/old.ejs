@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Techtionary</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark margin-bottom: 10rem">
+  <span class="navbar-brand mb-0 h1">Techtionary<small class="text-muted"> : tech terms, defined by you</small></span>
+  </nav>
+  <div class="container-fluid margin-top: 100rem">
+        <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/words/browse">
+      Browse Techtionary</a></button>
+    <p>
+    </p>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">
+      <a href="/words/new">Add a word to Techtionary</a></button>
+
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Word of the Day</h2>
+          <h3 class="card-subtitle mb-2 text-muted">randomlyChosenWord</h3>
+          <p class="card-text">Definition of randomly chosen word from Techtionary.</p>
+          <a href="#" class="card-link">Edit this word</a>
+          <a href="#" class="card-link"></a>
+        </div>
+      </div>
+  </div>
+
+  <form id="newWord" method="POST" action="/words">
+    Word: <input type="text" name="word" autofocus><br>
+    Source: <input type="text" name="source"><br>
+    Definition: <textarea name="definition"></textarea>
+
+    <input type="submit">
+  </form>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
