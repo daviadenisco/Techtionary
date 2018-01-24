@@ -29,10 +29,10 @@ app.get("/browse", (req, res) => {
 
 // this needs to come before /:id otherwise it's looking for an integer
 // localhost:8000/words/seed
-// app.get("/seed", (req, res) => {
-//   seedDb();
-//   res.json({seeding: "completed"})
-// });
+app.get("/seed", (req, res) => {
+  seedDb();
+  res.json({seeding: "completed"})
+});
 
 // http://localhost:8000/words/1
 app.get("/definition/:id", (req, res) => {
@@ -47,7 +47,7 @@ app.post("/", (req, res) => {
   addWord(req).then(words => {
     res.format({
       'application/json': () => res.json(words[0]),
-      'text/html': () => res.redirect('/words/definition/' + words[0].id)
+      'text/html': () => res.redirect('/#words' + words[0].id)
     });
   })
 });
@@ -86,10 +86,37 @@ function updatewords({ params: { id }, body: { word, definition }, }) {
 }
 
 // Seed db
-// function seedDb() {
-//   knex('words').insert({word: 'word one', definition: 'one'}).then();
-//   knex("words").insert({word: "word 2", definition: "definition 2"}).then();
-//   knex("words").insert({word: "word 3", definition: "definition 3"}).then();
-// }
+// Utilize your fucking migration file, idiot.
+function seedDb() {
+  knex.schema.dropTableIfExists('user')
+  .then(function () {
+  return knex.schema.createTable('user', function(table) {
+      table.increments();
+      table.string('name');
+      table.string('email', 128);
+      table.integer('age');
+      table.string('role').defaultTo('admin');
+      table.string('password');
+      table.timestamps();
+  });
+  })
+  .then(function() {
+    let vocab = {
+      "canonical":	"Authorized; recognized; accepted",
+      "get":	"The HTTP GET method requests a representation of the specified resource. Requests using GET should only retrieve data.",
+      "test script":	"A set of instructions to be performed on a system to ensure a system functions as expected.",
+      "patch":	"The HTTP PATCH request method applies partial modifications to a resource."
+    }
+
+    for (word in vocab) {
+      // word: word, definition: vocab[word] bc we need to tell it which data goes in which column of the table you stupid moron
+      knex('words').insert({word: word, definition: vocab[word]}).then();
+    }
+
+  })
+  .catch(function(error) {
+  //Error handler
+  });
+}
 
 module.exports = app;

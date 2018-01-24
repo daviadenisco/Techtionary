@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 // load routes
 // create a variable for the routes/words file
 const words = require('./routes/words');
+const index = require('./routes/index');
+
 
 const app = express();
 const PORT = 8000;
@@ -19,12 +21,10 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/example', (req, res) => {
-  res.render('example');
-})
+// app.use("/", index);
 
 // require the routes/words file
-app.use('/words', words);
+app.use('/', words);
 app.listen(PORT, () => {
   console.log('Server listening on ', PORT);
 })

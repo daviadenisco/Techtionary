@@ -1,33 +1,117 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
 
-<!-- <meta name="robots" content="noindex"> -->
+  <!-- <meta name="robots" content="noindex"> -->
   <meta name="viewport" content="width=device-width">
   <title>Techtionary: Home</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+
 </head>
+
 <body>
-<div class="jumbotron" style="background-image: url(https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg?w=738)">
+  <div class="jumbotron" style="background-image: url(https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg?w=738)">
 
-</div>
-  <div>
+  </div>
 
-  <!-- Nav tabs -->
+  <!--
+************** NAV TABS **************
+-->
+
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="Techtionary" role="tab" data-toggle="tab">Techtionary</a></li>
-    <li role="presentation"><a href="#words" aria-controls="messages" role="tab" data-toggle="tab">Browse</a></li>
-    <li role="presentation"><a href="#addWord" aria-controls="profile" role="tab" data-toggle="tab">Add a Word</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Resources</a></li>
+    <li role="presentation"><a href="#words" aria-controls="Browse" role="tab" data-toggle="tab">Browse</a></li>
+    <li role="presentation"><a href="#addWord" aria-controls="Add a Word" role="tab" data-toggle="tab">Add a Word</a></li>
+    <li role="presentation"><a href="#resources" aria-controls="Resources" role="tab" data-toggle="tab">Resources</a></li>
+    <li role="presentation"><a href="#updates" aria-controls="Updates" role="tab" data-toggle="tab">Updates</a></li>
   </ul>
 
-  <!-- Tab panes -->
+  <!--
+  ************** HOME #home **************
+  -->
+
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-      <p>Techtionary is a resource for web development students and beginners who are still fine-tuning their googling skills but need to quickly look up a term and get a relevant and easy-to-understand definition.</p>
+      <p>Techtionary is a resource for web development beginners and students who need to quickly look up terms and get relevant and easy-to-understand definitions but are still fine-tuning their googling skills.</p>
       <p>For example, try googling any of the following terms: V8 engine, focus, get, canonical, framework. The results of the search likely won't be too helpful.</p>
       <p>Techtionary is updated by beginners and students who want to share and store the terms and definitions they've worked hard to find.</p>
-      <p>Stay tuned for these 2018 updates: </p>
+    </div>
+
+    <!--
+************** BROWSE #words **************
+-->
+
+    <div role="tabpanel" class="tab-pane" id="words">
+      <div id="accordion"></div>
+      <div id="accordion">
+
+        <% definitions.forEach(function (word, idx) { %>
+          <div class="card">
+            <div class="card-header" id="heading<%= idx %>">
+              <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%= idx %>" aria-expanded="false" aria-controls="collapse<%= idx %>">
+                      <%= word.word %>
+                    </button>
+                  </h5>
+            </div>
+            <div id="collapse<%= idx %>" class="collapse" aria-labelledby="heading<%= idx %>" data-parent="#accordion">
+              <div class="card-body">
+                <%= word.definition %>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+
+    </div>
+
+    <!--
+************** ADD A WORD #addWord **************
+-->
+
+    <div role="tabpanel" class="tab-pane" id="addWord">
+      <div class="row">
+        <!-- <form id="addWord" method="post" action="#words" class="col-xs-8 col-xs-offset-2"> -->
+        <form id="addWord" class="col-xs-8 col-xs-offset-2">
+          <div class="form-group">
+            <label>Word</label>
+            <input id="word" type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Definition</label>
+            <textarea id="definition" class="form-control"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <!--
+************** RESOURCES #resources **************
+-->
+
+    <div role="tabpanel" class="tab-pane" id="resources">
+      <ul class="" role="">
+        <li role=""><a href="https://developer.mozilla.org/en-US/">MDN web docs</a></li>
+        <li role=""><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+        <li role="">Coming soon: add a resource</li>
+      </ul>
+
+    </div>
+
+
+    <!--
+************** UPDATES #updates **************
+-->
+
+    <div role="tabpanel" class="tab-pane" id="updates">
+      <p>Stay tuned for these awesome updates: </p>
       <ul class="" role="">
         <li role="" class="">User registration</li>
         <li role="">Add additional definitions to a word</li>
@@ -41,94 +125,90 @@
         <li role="">Add a resource</li>
         <li role=""><a href="mailto:techtionary@mail.com?Subject=Techtionary%20Update%20Suggestion" target="_top">Suggest an update</a></li>
       </ul>
-  </div>
-    <div role="tabpanel" class="tab-pane" id="addWord">
-      <div class="row">
-         <form id="newWord" method="post" action="words" class="col-xs-8 col-xs-offset-2">
-            <div class="form-group">
-              <label>Word</label>
-              <input id="word" type="text" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Defintion</label>
-              <textarea id="definition" class="form-control"></textarea>
-            </div>
-
-            <button class="btn btn-primary">Save</button>
-        </form>
-
-      </div>
 
     </div>
-    <div role="tabpanel" class="tab-pane" id="words">
-      <div id="wordList"></div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="settings">
-      <ul class="" role="">
-        <li role=""><a href="https://developer.mozilla.org/en-US/">MDN web docs</a></li>
-        <li role=""><a href="https://stackoverflow.com/">Stack Overflow</a></li>
-        <li role="">Coming soon: add a resource</li>
-      </ul>
 
-    </div>
+<!-- closing div -->
+
   </div>
 
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</div>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<script>
-document.querySelector("#newWord")
-  .addEventListener('submit', (e) => {
-    e.preventDefault();
+  <!--
+************** SCRIPTS **************
+-->
+  <script>
+    document.querySelector("#addWord")
+      .addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    const data = {
-      word: document.querySelector("#newWord #word").value,
-      definition: document.querySelector("#newWord #word").value
-    };
+        const data = {
+          word: document.querySelector("#word").value,
+          definition: document.querySelector("#definition").value
+        };
 
-    console.log(data);
+        console.log(data);
 
-    fetch('http://localhost:8000/words', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json())
-    .then(appendWord)
-  })
+        fetch('http://localhost:8000/', {
+            method: 'post',
+            headers: {
+              'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          }).then(res => res.json())
+          .then(appendWord)
+      })
 
 
-window.onload = () => {
-   fetch('/words', {
-     headers: {
-       'Accept': 'application/json'
-     }
-   }).then((res) => res.json())
-   .then(words => {
-     // append each word to wordList
-     words.forEach(word => appendWord(word));
-   })
+    window.onload = () => {
+      fetch('/', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then((res) => res.json())
+        .then(words => {
+          // append each word to wordList
+          // words.forEach(word => appendWord(word));
+        })
+        .then(words => {
+          // append each definition to wordList
+          // words.forEach(word => appendDef(definition));
+        })
 
-}
+    }
 
-function appendWord(data)  {
-    const list = document.querySelector("#wordList");
-    const el = document.createElement('div');
+    function appendWord(data) {
+      const list = document.querySelector("#wordList");
+      const el = document.createElement('div');
 
-    el.innerHTML = `
+      el.innerHTML = `
       <div>
         <h2>${data.word}</h2>
       </div>
     `;
 
-    list.appendChild(el);
+      // list.appendChild(el);
 
-}
-</script>
+    }
+
+    function appendDef(data) {
+      const list = document.querySelector("#wordList");
+      const el = document.createElement('div');
+
+      el.innerHTML = `
+      <div>
+        <h2>${data.definition}</h2>
+      </div>
+    `;
+
+      // list.appendChild(el);
+
+    }
+
+  </script>
 
 </body>
+
 </html>
