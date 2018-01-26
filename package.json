@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon",
+    "start": "node server.js",
     "knex": "knex",
     "db:seed": "knex seed:run",
     "db:migrate": "knex migrate:latest",
