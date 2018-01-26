@@ -24,7 +24,9 @@
   },
   "description": "quarter 2 project",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^4.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "Techtionary"
