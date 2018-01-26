@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon",
-    "knex": "knex"
+    "knex": "knex",
+    "db:seed": "knex seed:run",
+    "db:migrate": "knex migrate:latest",
+    "postinstall": "npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

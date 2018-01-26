@@ -5,7 +5,7 @@ const knex = require("../db");
 // representational state transfer
 
 app.get("/", (req, res) => {
-  findAllWords(req).then(words =>
+  findAllWords(req).orderByRaw('lower(word)').then(words =>
     res.format({
       'application/json': () => {
         res.json(words)

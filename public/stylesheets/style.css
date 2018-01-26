@@ -1,22 +1,131 @@
+/*
+**************
+JUMBOTRON
+**************
+*/
+
+.jumbotron {
+  /* background: url("https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg?w=738)") no-repeat center center; */
+  /* background: url("https://blog.syncano.io/content/images/2016/02/javascript-code.jpg") no-repeat center center; */
+  /* background: url("https://cdn-images-1.medium.com/max/1024/1*bcZz-qb_DNpvrNNwQBhQmQ.jpeg") no-repeat center center; */
+  background: url("https://cdn-images-1.medium.com/max/1600/1*8r6hvv5E-FOOdKOih4G7Hg.jpeg") no-repeat center center;
+  background-color: black;
+  background-size: 100%;
+  height: 150px;
+  opacity: 1;
+  color: black;
+  margin-bottom: 0;
+}
+
+/*
+**************
+BUTTONS
+**************
+*/
 .btn btn-secondary btn-lg btn-block .btn btn-secondary btn-lg btn-block {
-  background-color: blue;
+  background-color: red;
 }
+
+/*
+**************
+BODY
+**************
+*/
 body {
-  background: Maroon;
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: gainsboro;
+  background: #2c2c54;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  /* font-weight: 500; */
+  line-height: 26.4px;
 }
-.text-muted {
-  color: white;
+
+.inner {
+  padding-left: 30px;
+  padding-right: 70px;
+  border: solid 20px whiteSmoke;
+  background: WhiteSmoke;
 }
+
+/*
+**************
+LINKS
+**************
+*/
 a {
-  color: white;
+  color: black;
 }
+
 .card {
   padding-top: 10px;
   width: 80%;
 }
 nav .navbar navbar-light {
-  background: black;
+  /* background: red; */
+}
+.tab-pane {
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#accordion {
+  width: 75%;
+}
+.U2 {
+  float: right;
+  border-style: solid;
+  border-width: 20px;
+  border-color: silver;
+  background: whiteSmoke;
+  color: rosyBrown;
+}
+.box {
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 250px;;
+}
+.card-body {
+  font-size: 14px;
+}
+.nav-tabs {
+  color: F6F6F6;
+}
+.tab-content {
+  background-color: WhiteSmoke;
+  color: black;
+  padding: 5px;
+}
+.nav-tabs > li.active > a {
+  color: black;
+  font-size: 23px;
+}
+.nav-tabs > li > a:hover{
+  background-color: black;
+  border: medium none;
+  border-radius: 0;
+  color: gainsboro;
+}
+#techtionary {
+  color: white;
+  padding-left: 25px;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  text-shadow: 4px 4px black;
+  float: left;
+}
+.navLink {
+  float: right;
+  color: WhiteSmoke;
+  padding-right: 25px;
+}
+.btn-link {
+  color: gainsboro;
+}
+.card-header {
+  background: white;
 }

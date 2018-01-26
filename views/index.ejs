@@ -7,133 +7,162 @@
   <!-- <meta name="robots" content="noindex"> -->
   <meta name="viewport" content="width=device-width">
   <title>Techtionary: Home</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 
 <body>
-  <div class="jumbotron" style="background-image: url(https://tctechcrunch2011.files.wordpress.com/2015/04/codecode.jpg?w=738)">
-
+  <div class="jumbotron">
+    <div id="techtionary">
+      <h1>Techtionary</h1>
+    </div>
   </div>
 
-  <!--
+  <!-- <div class="navbar navbar-inverse navbar-fixed">
+    <h1 id="techtionary">Techtionary</h1> -->
+    <!-- https://github.com/daviadenisco/Techtionary -->
+    <!-- <a class="navLink" href="https://github.com/daviadenisco/techtionary" target="_blank">GitHub</a>
+    <a class="navLink" href="mailto:techtionary@gmail.com">Contact</a>
+    </ul>
+  </div> -->
+
+  <div class="inner">
+
+    <!--
 ************** NAV TABS **************
 -->
 
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="Techtionary" role="tab" data-toggle="tab">Techtionary</a></li>
-    <li role="presentation"><a href="#words" aria-controls="Browse" role="tab" data-toggle="tab">Browse</a></li>
-    <li role="presentation"><a href="#addWord" aria-controls="Add a Word" role="tab" data-toggle="tab">Add a Word</a></li>
-    <li role="presentation"><a href="#resources" aria-controls="Resources" role="tab" data-toggle="tab">Resources</a></li>
-    <li role="presentation"><a href="#updates" aria-controls="Updates" role="tab" data-toggle="tab">Updates</a></li>
-  </ul>
-
-  <!--
-  ************** HOME #home **************
-  -->
-
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
-      <p>Techtionary is a resource for web development beginners and students who need to quickly look up terms and get relevant and easy-to-understand definitions but are still fine-tuning their googling skills.</p>
-      <p>For example, try googling any of the following terms: V8 engine, focus, get, canonical, framework. The results of the search likely won't be too helpful.</p>
-      <p>Techtionary is updated by beginners and students who want to share and store the terms and definitions they've worked hard to find.</p>
-    </div>
+    <ul class="nav nav-tabs" role="tablist" id="navBar">
+      <li role="presentation" class="active"><a href="#home" aria-controls="Techtionary" role="tab" data-toggle="tab">About</a></li>
+      <li role="presentation"><a href="#words" aria-controls="Browse" id="words-list" role="tab" data-toggle="tab">Browse</a></li>
+      <li role="presentation"><a href="#addWord" aria-controls="Add a Word" role="tab" data-toggle="tab">Add a Word</a></li>
+      <li role="presentation"><a href="#resources" aria-controls="Resources" role="tab" data-toggle="tab">Resources</a></li>
+      <li role="presentation"><a href="#updates" aria-controls="Updates" role="tab" data-toggle="tab">Updates</a></li>
+    </ul>
 
     <!--
+  ************** HOME #home **************
+  -->
+    <div class="over container body-content">
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <p>Techtionary is a resource for web development beginners and students who need to quickly look up terms and get relevant and easy-to-understand definitions but are still fine-tuning their googling skills.</p>
+          <p>For example, try googling any of the following terms: V8 engine, focus, get, canonical, framework. The results of the search likely won't be too helpful.</p>
+          <p>Techtionary is updated by beginners and students who want to share and store the terms and definitions they've worked hard to find.</p>
+        </div>
+
+        <!--
 ************** BROWSE #words **************
 -->
 
-    <div role="tabpanel" class="tab-pane" id="words">
-      <div id="accordion"></div>
-      <div id="accordion">
+        <div role="tabpanel" class="tab-pane" id="words">
+          <div class="U2">
+            <h4 class="box">Can't find a word?</h4>
+            <h4 id="linkAddWord" class="box">Add a Word</h4>
+          </div>
+          <div id="accordion"></div>
+          <div id="accordion">
 
-        <% definitions.forEach(function (word, idx) { %>
-          <div class="card">
-            <div class="card-header" id="heading<%= idx %>">
-              <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%= idx %>" aria-expanded="false" aria-controls="collapse<%= idx %>">
+            <% definitions.forEach(function (word, idx) { %>
+              <div class="card">
+                <div class="card-header" id="heading<%= idx %>">
+                  <!-- <h5 class="mb-0"> -->
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%= idx %>" aria-expanded="false" aria-controls="collapse<%= idx %>">
                       <%= word.word %>
                     </button>
-                  </h5>
-            </div>
-            <div id="collapse<%= idx %>" class="collapse" aria-labelledby="heading<%= idx %>" data-parent="#accordion">
-              <div class="card-body">
-                <%= word.definition %>
+                  <!-- </h5> -->
+                </div>
+                <div id="collapse<%= idx %>" class="collapse" aria-labelledby="heading<%= idx %>" data-parent="#accordion">
+                  <div class="card-body">
+                    <%= word.definition %>
+                  </div>
+                </div>
               </div>
-            </div>
+              <% }) %>
           </div>
-          <% }) %>
-      </div>
 
-    </div>
+        </div>
 
-    <!--
+        <!--
 ************** ADD A WORD #addWord **************
 -->
 
-    <div role="tabpanel" class="tab-pane" id="addWord">
-      <div class="row">
-        <!-- <form id="addWord" method="post" action="#words" class="col-xs-8 col-xs-offset-2"> -->
-        <form id="addWord" class="col-xs-8 col-xs-offset-2">
-          <div class="form-group">
-            <label>Word</label>
-            <input id="word" type="text" class="form-control">
+        <div role="tabpanel" class="tab-pane" id="addWord">
+          <div class="row">
+            <!-- <form id="addWord" method="post" action="#words" class="col-xs-8 col-xs-offset-2"> -->
+            <form id="addWord" class="col-xs-8 col-xs-offset-2">
+              <div class="form-group">
+                <label>Word</label>
+                <input id="word" type="text" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>Definition</label>
+                <textarea id="definition" class="form-control"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Save</button>
+            </form>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>Definition</label>
-            <textarea id="definition" class="form-control"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-
-      </div>
-
-    </div>
-
-    <!--
+        <!--
 ************** RESOURCES #resources **************
 -->
 
-    <div role="tabpanel" class="tab-pane" id="resources">
-      <ul class="" role="">
-        <li role=""><a href="https://developer.mozilla.org/en-US/">MDN web docs</a></li>
-        <li role=""><a href="https://stackoverflow.com/">Stack Overflow</a></li>
-        <li role="">Coming soon: add a resource</li>
-      </ul>
+        <div role="tabpanel" class="tab-pane" id="resources">
+          <ul class="" role="">
+            <li role=""><a href="https://developer.mozilla.org/en-US/">MDN web docs</a></li>
+            <li role=""><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+            <li role=""><a href="https://www.freecodecamp.org/">Free Code Camp</a></li>
+            <li role=""><a href="https://www.codecademy.com/learn">Codecademy</a></li>
+            <li role=""><a href="https://www.codeschool.com/">Code School</a></li>
+            <li role=""><a href="https://css-tricks.com/">CSS Tricks</a></li>
+            <li role=""><a href="https://www.khanacademy.org/">Khan Academy</a></li>
+            <li role=""><a href="https://www.udemy.com/">Udemy</a></li>
+            <li role=""><a href="https://teamtreehouse.com/">TreeHouse</a></li>
+            <li role=""><a href="https://github.com/thedaviddias/Resources-Front-End-Beginner">Essential list of resources for Front-End beginners</a></li>
+            <li role=""><a href="https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer">100+ Free resources for learning Full Stack Web Development</a></li>
+            <li role="">Coming soon: add a resource</li>
+          </ul>
 
-    </div>
+        </div>
 
 
-    <!--
+        <!--
 ************** UPDATES #updates **************
 -->
 
-    <div role="tabpanel" class="tab-pane" id="updates">
-      <p>Stay tuned for these awesome updates: </p>
-      <ul class="" role="">
-        <li role="" class="">User registration</li>
-        <li role="">Add additional definitions to a word</li>
-        <!-- <li role=""><a href="">User karma</a></li> -->
-        <!-- <li role=""><a href="">Stack Overflow style voting up/down for definitions</a></li> -->
-        <li role="">Voting: Did you find this definition helpful?</li>
-        <li role="">Comment on definitions</li>
-        <li role="">Add tags to words</li>
-        <li role="">Option to view/sort words by tag</li>
-        <li role="">Add words to custom vocabulary quiz</li>
-        <li role="">Add a resource</li>
-        <li role=""><a href="mailto:techtionary@mail.com?Subject=Techtionary%20Update%20Suggestion" target="_top">Suggest an update</a></li>
-      </ul>
+        <div role="tabpanel" class="tab-pane" id="updates">
+          <p>Stay tuned for these awesome updates: </p>
+          <ul class="" role="">
+            <li role="" class="">User registration</li>
+            <li role="">Add additional definitions to a word</li>
+            <!-- <li role=""><a href="">User karma</a></li> -->
+            <!-- <li role=""><a href="">Stack Overflow style voting up/down for definitions</a></li> -->
+            <li role="">Voting: Did you find this definition helpful?</li>
+            <li role="">Comment on definitions</li>
+            <li role="">Add tags to words</li>
+            <li role="">Option to view/sort words by tag</li>
+            <li role="">Add words to custom vocabulary quiz</li>
+            <li role="">Add a resource</li>
+            <li role=""><a href="mailto:techtionary@mail.com?Subject=Techtionary%20Update%20Suggestion" target="_top">Suggest an update</a></li>
+          </ul>
 
+        </div>
+      </div>
     </div>
 
-<!-- closing div -->
+
+    <!-- closing div -->
 
   </div>
+  <footer></footer>
 
   <script src="https://code.jquery.com/jquery.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <!--
@@ -142,7 +171,7 @@
   <script>
     document.querySelector("#addWord")
       .addEventListener('submit', (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const data = {
           word: document.querySelector("#word").value,
@@ -152,15 +181,26 @@
         console.log(data);
 
         fetch('http://localhost:8000/', {
-            method: 'post',
-            headers: {
-              'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          }).then(res => res.json())
-          .then(appendWord)
+          method: 'post',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(function () {
+            let element = document.getElementById("words-list")
+            element.click()
+            location.reload()
+          }
+        )
       })
 
+      function clearForm() {
+        document.querySelector("#word").value = ""
+        document.querySelector("#definition").value = ""
+      }
+      // function reloadToBrowse() {
+      //
+      // }
 
     window.onload = () => {
       fetch('/', {
@@ -206,7 +246,40 @@
       // list.appendChild(el);
 
     }
+    var url = document.location.toString();
+    if (url.match('#')) {
+      $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+    }
 
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown.bs.tab', function(e) {
+      window.location.hash = e.target.hash;
+      window.scrollTo(0, 0);
+    })
+
+    // change background based on tab selected
+
+    $('[id*="tab-"]').click(function(e) {
+      e.preventDefault()
+      $(this).tab('show')
+
+      if (this.id == "tab-1") {
+        $('body').css('background', 'red');
+      } else if (this.id == "tab-2") {
+        $('body').css('background', 'green');
+      } else if (this.id == "tab-3") {
+        $('body').css('background', 'blue');
+      } else if (this.id == "tab-4") {
+        $('body').css('background', 'purple');
+      }
+
+    });
+
+    $("#linkAddWord").on('click', function(e) {
+      e.preventDefault();
+      $('#navBar a[href="#addWord"]').tab('show');
+
+    });
   </script>
 
 </body>

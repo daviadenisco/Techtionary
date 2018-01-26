@@ -2,8 +2,8 @@ module.exports = {
   up (knex, Promise) {
     return knex.schema.createTable('words', (table) => {
       table.increments();
-      table.string('word', 255).notNull();
-      table.text('definition').defaultTo('');
+      table.string('word', 100).notNull();
+      table.string('definition', 2000).defaultTo('');
       table.timestamps(true, true);
     });
   },
