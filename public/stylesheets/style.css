@@ -24,6 +24,7 @@ BUTTONS
 */
 .btn btn-secondary btn-lg btn-block .btn btn-secondary btn-lg btn-block {
   background-color: red;
+  color: black;
 }
 
 /*
@@ -32,13 +33,13 @@ BODY
 **************
 */
 body {
-  background: #2c2c54;
+  background: black;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-variant: normal;
   /* font-weight: 500; */
-  line-height: 26.4px;
+  line-height: 24px;
 }
 
 .inner {
@@ -46,6 +47,7 @@ body {
   padding-right: 70px;
   border: solid 20px whiteSmoke;
   background: WhiteSmoke;
+  margin: 0;
 }
 
 /*
@@ -65,7 +67,7 @@ nav .navbar navbar-light {
   /* background: red; */
 }
 .tab-pane {
-  padding-top: 40px;
+  padding-top: 35px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -88,7 +90,7 @@ nav .navbar navbar-light {
   width: 250px;;
 }
 .card-body {
-  font-size: 14px;
+  font-size: 16px;
 }
 .nav-tabs {
   color: F6F6F6;
@@ -100,19 +102,19 @@ nav .navbar navbar-light {
 }
 .nav-tabs > li.active > a {
   color: black;
-  font-size: 23px;
+  font-size: 18px;
 }
 .nav-tabs > li > a:hover{
-  background-color: black;
+  background-color: white;
   border: medium none;
   border-radius: 0;
-  color: gainsboro;
+  color: black;
 }
 #techtionary {
   color: white;
   padding-left: 25px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 25px;
   font-style: normal;
   font-variant: normal;
   text-shadow: 4px 4px black;
@@ -124,8 +126,27 @@ nav .navbar navbar-light {
   padding-right: 25px;
 }
 .btn-link {
-  color: gainsboro;
+  color: black;
+  font-size: 16px;
 }
 .card-header {
   background: white;
+  color: black;
+}
+#footer {
+  background: black;
+  color: white;
+}
+#linkAddWord #sugUpdate{
+  color: rosyBrown;
+}
+#linkAddWord:hover #sugUpdate:hover{
+  color: black;
+}
+a #contact {
+  color: white;
+  text-decoration: none;
+}
+h5 {
+  font-size: 16px;
 }
